@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="view_order_form_inherit_sale_module" model="ir.ui.view">
+        <field name="name">sale.order.form.inherit.sale.module</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='action_cancel']" position="after">
+                <button name="action_product_confirm_wizard" type="object" string="Add to Orders"/>
+                <button name="action_product_create" type="object" string="Create Rule"/>
+                <button name="action_product_update" type="object" string="1, Update Rule"/>
+                <button name="action_product_delete" type="object" string="2, Delete Rule"/>
+                <button name="action_product_unlink" type="object" string="3, Unlink Rule"/>
+<!--                <button name="action_product_link" type="object" string="4, Link Rule"/>-->
+                <button name="action_product_clear_all" type="object" string="5, Clear All"/>
+            </xpath>
+            <xpath expr="//notebook" position="inside">
+                <page string="Custom Order Line">
+                    <field name="custom_order_line">
+                        <!--                        <list editable="bottom">-->
+                        <list editable="bottom">
+                            <field name="product_id"/>
+                            <field name="qty"/>
+                            <field name="delivered"/>
+                            <field name="invoiced"/>
+                            <field name="unit_price"/>
+                            <field name="tax"/>
+                            <field name="amount"/>
+                        </list>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>
