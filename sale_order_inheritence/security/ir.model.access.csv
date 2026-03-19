@@ -2,3 +2,5 @@ id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_sale_order_custom_order_line,access_sale_order_custom_order_line,sale_order_inheritence.model_sale_order_custom_order_line,base.group_user,1,1,1,1
 access_product_confirm_wizard,access_product_confirm_wizard,sale_order_inheritence.model_product_confirm_wizard,base.group_user,1,0,1,1
 access_product_confirm_wizard_line,access_product_confirm_wizard_line,sale_order_inheritence.model_product_confirm_wizard_line,base.group_user,1,0,1,1
+
+access_custom_invoice,access_custom_invoice,sale_order_inheritence.model_custom_invoice,base.group_user,1,1,1,1

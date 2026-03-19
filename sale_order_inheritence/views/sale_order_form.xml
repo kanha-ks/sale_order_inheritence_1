@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record id="view_order_form_inherit_js" model="ir.ui.view">
+        <field name="name">sale.order.form.inherit.custom</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='action_quotation_send']" position="after">
+
+                <widget name="show_customer_info"/>
+                <!--                <field string="Customer Info" name="partner_id" widget="show_customer_info"/>-->
+                <!--                <button string="Customer Info"-->
+                <!--                        type="button"-->
+                <!--                        class="customer_info_btn btn-secondary"-->
+                <!--                />-->
+            </xpath>
+        </field>
+        <!--            -->
+        <!--             <xpath expr="//header" position="inside">-->
+        <!--                <button name="js_check_customer"-->
+        <!--                        type="button"-->
+        <!--                        string="Check Customer Info"-->
+        <!--                        class="btn-primary"-->
+        <!--                        t-att-data-id="record.id"/>-->
+        <!--            </xpath>-->
+    </record>
+</odoo>

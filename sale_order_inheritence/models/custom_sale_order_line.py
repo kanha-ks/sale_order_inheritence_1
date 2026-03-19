@@ -23,7 +23,7 @@ class CustomSaleOrderLine(models.Model):
     invoiced = fields.Float(string="Invoiced")
     unit_price = fields.Float(string="Unit Price")
 
-    tax = fields.Float(compute="_calculate_amounts", string="Taxes")
+    tax = fields.Many2many('account.tax',string="Taxes")
     amount = fields.Float(compute="_calculate_amounts", string="Amount")
 
     order_id = fields.Many2one('sale.order', string="Order ID")
@@ -36,9 +36,7 @@ class CustomSaleOrderLine(models.Model):
         # functionality
         for each in self:
             subtotal = each.qty * each.unit_price
-            each.tax = 2
-
-            each.amount = subtotal + each.tax
+            each.amount = subtotal
 
     # -------------------------------------------------------------------------
     # ONCHANGE METHODS

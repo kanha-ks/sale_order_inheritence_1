@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
-# Part of Odoo. See LICENSE file for full copyright and licensing details.
 
 from . import custom_sale_order_line
 from . import sale_order
+from . import account_move
+from . import custom_invoice_line

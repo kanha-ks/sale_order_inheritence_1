@@ -21,6 +21,31 @@ class SaleOrder(models.Model):
     # ACTIONS (Wizards)
     # -------------------------------------------------------------------------
 
+
+    @api.model
+    def get_customer_extra_info(self, res_id):
+        order = self.browse(res_id)
+        return {
+            'email': order.partner_id.email,
+            'phone': order.partner_id.phone,
+        }
+
+    def _create_invoices(self, final=False, grouped=False):
+        invoices = super()._create_invoices(final=final, grouped=grouped)
+        for order in self:
+            if order.custom_order_line:
+                for inv in invoices:
+                    for line in order.custom_order_line:
+                        self.env['custom.invoice'].create({
+                            'invoice_id': inv.id,
+                            'product_id': line.product_id.id,
+                            'quantity': line.qty,
+                            'taxes': line.tax,
+                            'price_unit': line.unit_price,
+                            'amount': line.amount,
+                        })
+        return invoices
+
     # scheduled action
     @api.model
     def cron_auto_cancel_expired_orders(self):
@@ -107,3 +132,5 @@ class SaleOrder(models.Model):
         self.write({
             'order_line': [(5, 0, 0)]
         })
+
+
